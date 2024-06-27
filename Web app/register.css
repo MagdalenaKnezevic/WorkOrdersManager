@@ -1,0 +1,268 @@
+/* body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+} */
+
+body{
+    font-family: 'Arial', sans-serif;
+}
+
+header {
+    background-color: #007BFF;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-direction: row;
+
+
+    padding: 0 10px; 
+    justify-content: space-between; 
+}
+
+header p {
+    color: white;
+    font-size: 1.5em;
+    margin: 0;
+    font-style: bold;
+    padding-left : 26em;
+
+}
+
+img {
+    width: 2.5em;
+    height: 2.5em;
+
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-end; 
+    padding-right : 3em;
+}
+
+ .form {
+    max-width: 400px;
+    margin: auto;
+    margin-top: 7em;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 1em;
+}
+.form p {
+    margin-bottom: 1em;
+}
+.form label {
+    margin-bottom: .5em;
+    color: #007BFF;
+    display: block;
+}
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="password"] {
+    border: 1px solid #CCCCCC;
+    padding: .5em;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form input[type="submit"] {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 0.4em 2em;
+    cursor: pointer;
+    font-size: 1.3em;
+}
+.form input[type="submit"]:hover {
+    background-color: #013267
+}
+
+.form a {
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 1.2em; /* Increase font size of link */
+}
+
+.form a:hover {
+    text-decoration: underline;
+}
+
+.inline-label {
+    display: inline-block;
+    margin-left: 0.5em;
+    margin-right: 1em;
+    padding-top: 0.7em;
+}
+
+.role-selection {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.form p.submit-button {
+    text-align: center;
+    
+}
+
+
+.footer {
+    margin-top: 10em;
+    max-width: 100%;
+    left: 0;
+    background-color: #f5fcff;
+    overflow: hidden;
+    align-items: flex-start;
+    padding-left : 1em;
+    padding-right : 1em;
+    padding-bottom : 1em;
+    padding-top : 0.3em;
+    gap: 0em;
+    color: var(--secondary-color);
+     /* Push footer to the bottom */
+}
+
+.footer .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+
+content {
+    width: 100px;
+
+}
+
+.footer .social-links {
+    display: flex;
+    gap: 0em;
+}
+
+.footer .social-links img {
+    width: 2.5em;
+    height: 2.5em;
+    gap: 0em;
+}
+
+
+.footer .credits {
+    text-align: center;
+    margin-top: 1em;
+}
+
+credits {
+    width: 100px;
+}
+
+.footer .divider {
+    height: 1px;
+    background-color: #007BFF;
+    margin: 1em 0;
+}
+
+.footer .row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer .row p {
+    margin: 0;
+}
+
+.footer .footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 600px) {
+    .form {
+        max-width: 90%;
+        margin-top: 4em;
+        padding: 1em;
+    }
+
+    header p {
+        font-size: 1.2em;
+        padding-left: 0;
+    }
+
+    header img {
+        width: 2em;
+        height: 2em;
+    }
+
+    .form input[type="submit"] {
+        font-size: 1em;
+        padding: 0.4em 1em;
+    }
+
+    .footer .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer .row {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5em;
+    }
+
+    .footer .footer-links {
+        flex-direction: column;
+        gap: 0.5em;
+    }
+
+    .footer .social-links img {
+        width: 2em;
+        height: 2em;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .form {
+        max-width: 70%;
+        margin-top: 4em;
+        padding: 1.5em;
+    }
+
+    header p {
+        font-size: 1.3em;
+    }
+
+    header img {
+        width: 2.3em;
+        height: 2.3em;
+    }
+
+    .footer .content {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer .row {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer .footer-links {
+        flex-direction: row;
+        gap: 1em;
+    }
+
+    .footer .social-links img {
+        width: 2.3em;
+        height: 2.3em;
+    }
+}
