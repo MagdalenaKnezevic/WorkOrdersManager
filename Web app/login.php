@@ -1,29 +1,19 @@
 <?php
 session_start();
-
-// Database connection details
-$host = "localhost";
-$username = "root";
-$dbPassword = "";
-$dbname = "work_orders_manager";
-$con = new mysqli($host, $username, $dbPassword, $dbname);
-
-if ($con->connect_error) {
-    die("Connection failed: " . $con->connect_error);
-}
+require_once 'db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
     // Fetch user data from database
-    $stmt = $con->prepare("SELECT id, email, password, role FROM users WHERE email = ?");
+    $stmt = $con->prepare("SELECT id, email, password, role, firstName, lastName FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows == 1) {
-        $stmt->bind_result($id, $email, $hashed_password, $role);
+        $stmt->bind_result($id, $email, $hashed_password, $role, $firstName, $lastName);
         $stmt->fetch();
 
         if (password_verify($password, $hashed_password)) {
@@ -32,6 +22,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['id'] = $id;
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $role;
+            $_SESSION['firstName'] = $firstName;
+            $_SESSION['lastName'] = $lastName;
 
             // Redirect user to appropriate page
             if ($role === 'worker') {
@@ -59,6 +51,17 @@ $con->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log In</title>
     <link rel="stylesheet" href="login.css">
+    <style>
+        .password-container {
+            position: relative;
+        }
+        .password-container input[type="checkbox"] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -73,7 +76,11 @@ $con->close();
         </p>
         <p>
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" required>
+            <div class="password-container">
+                <input type="password" name="password" id="password" required>
+                
+            </div>
+            <input type="checkbox" id="showPassword">
         </p>
         <?php 
         if(isset($login_err)) {
@@ -113,5 +120,17 @@ $con->close();
     </div>
 </div>
 
+<script>
+    const passwordInput = document.getElementById('password');
+    const showPasswordCheckbox = document.getElementById('showPassword');
+
+    showPasswordCheckbox.addEventListener('change', () => {
+        if (showPasswordCheckbox.checked) {
+            passwordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+        }
+    });
+</script>
 </body>
 </html>

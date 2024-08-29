@@ -28,10 +28,10 @@ header p {
     color: white;
     font-size: 1.5em;
     margin: 0;
-    padding-left : 26em;
+    /* padding-left : 26em; */
 }
 
-img {
+/* img {
     width: 2.5em;
     height: 2.5em;
 
@@ -39,6 +39,12 @@ img {
     align-items: center; 
     justify-content: flex-end; 
     padding-right : 3em;
+} */
+
+
+header img.logo {
+    width: 2.5em;
+    height: 2.5em;
 }
 
 .form {
@@ -109,10 +115,10 @@ img {
    
 }
 
-content {
+/* content {
     width: 100px;
 
-}
+} */
 
 .footer .social-links {
     display: flex;
@@ -130,9 +136,9 @@ content {
     margin-top: 1em;
 }
 
-credits {
+/* .credits {
     width: 100px;
-}
+} */
 
 .footer .divider {
     height: 1px;
@@ -145,13 +151,18 @@ credits {
     justify-content: space-between;
 }
 
-.footer .row p {
+/* .footer .row p {
     margin: 0;
-}
+} */
 
 .footer .footer-links {
     display: flex;
     gap: 20px;
+}
+
+#showPassword {
+    margin-top : 0em;
+    margin-left: 10.5em;
 }
 
 
@@ -165,6 +176,12 @@ credits {
 
     header p {
         font-size: 1.2em;
+        padding-left: 0; /* Center text on small screens */
+    }
+
+    header img.logo {
+        width: 2em;
+        height: 2em;
     }
 
     .form input[type="submit"] {
@@ -201,6 +218,12 @@ credits {
 
     header p {
         font-size: 1.3em;
+        padding-left: 0;
+    }
+
+    header img.logo {
+        width: 2.3em;
+        height: 2.3em;
     }
 
     .footer .content {

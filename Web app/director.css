@@ -1,0 +1,302 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+}
+
+.header .left-section {
+    display: flex;
+    align-items: center;
+}
+
+.header h1 {
+    margin: 0;
+    margin-left: 10px; /* Adds space between menu icon and title */
+}
+
+.normal-weight {
+    font-weight: normal;
+    font-size: 0.9em;
+}
+
+.bold-weight {
+    font-weight: bold;
+}
+
+img {
+    width: 3em;
+    height: 3em;
+}
+
+.menu {
+    width: 2.5em;
+    height: 2.5em;
+    cursor: pointer; /* Adds pointer cursor to indicate it's clickable */
+}
+
+.profile-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    width : 10em;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.profile-menu:hover .dropdown-content {
+    display: block;
+}
+
+.side-menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.side-menu a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.side-menu a:hover {
+    background-color: #575757;
+}
+
+.side-menu .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.grey-divider-1{
+    background-color: #9a9595;
+    width: 100%;
+    height: 3em;
+    margin-top: 2em;
+}
+.grey-divider-2{
+    background-color: #9a9595;
+    width: 100%;
+    height: 3em;
+}
+
+.add-new-order{
+    display: flex;
+    align-items: center;
+}
+
+.add-p {
+    font-weight: bold;
+    font-size: 2em;
+    padding-left: 2em;
+    color: #007BFF;
+}
+
+.plus {
+    padding-left: 2em;
+}
+
+.active-p{
+    font-size: 2em;
+    padding-left: 1em;
+    color: #007BFF;
+}
+
+.work-order {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.work-order h3 {
+    margin: 0;
+}
+
+.work-order p {
+    margin: 5px 0;
+}
+
+.work-order .order-date {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: bold;
+}
+
+.work-order .order-status {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+}
+
+.work-order .order-status img {
+    width: 20px;
+    height: 20px;
+}
+
+.work-orders-list{
+    width : 94em;
+    margin-left : 1em;
+}
+
+.work-order {
+    border: 1px solid #ddd;
+    padding: 1em;
+    margin-bottom: 1em;
+    border-radius: 0.2em;
+    position: relative;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    cursor: pointer; /* Dodano kako bi se pokazalo da je klikabilno */
+}
+
+.work-order:hover {
+    background-color: #f0f8ff; /* Svjetlo plava boja */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Blaga sjena */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header h1 {
+        font-size: 1.2em;
+    }
+
+    .work-orders-list {
+        margin-left: 0;
+    }
+
+    .work-orders-list {
+        width : 100%;
+    }
+
+    .work-order {
+        padding: 15px;
+        margin: 5px;
+
+    }
+
+    .add-new-order, .active-p {
+        text-align: center;
+    }
+
+    .plus {
+        width: 2em;
+        height: 2em;
+    }
+
+    .add-p, .active-p {
+        font-size: 1.2em;
+    }
+
+    .dropdown-content {
+        min-width: 100px;
+    }
+
+    .side-menu a {
+        font-size: 16px;
+        padding: 8px 10px;
+    }
+
+    .work-order {
+        width : 95%;
+    } 
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 10px;
+    }
+
+    .header h1 {
+        font-size: 1em;
+    }
+
+    .menu {
+        width: 1.5em;
+        height: 1.5em;
+    }
+
+    .profile-menu img {
+        width: 2em;
+        height: 2em;
+    }
+
+    .dropdown-content {
+        min-width: 80px;
+    }
+
+    .side-menu a {
+        font-size: 14px;
+        padding: 6px 8px;
+    }
+
+    .add-p, .active-p {
+        font-size: 1em;
+    }
+
+    .plus {
+        width: 1.2em;
+        height: 1.2em;
+    }
+
+    .work-order h3 {
+        font-size: 1em;
+    }
+
+    .work-order .order-date {
+        font-size: 0.8em;
+    }
+
+    .work-orders-list {
+        width : 100%;
+    }
+
+    .work-order {
+        width : 90%;
+    }
+}

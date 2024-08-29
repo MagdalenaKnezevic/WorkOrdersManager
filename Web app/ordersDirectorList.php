@@ -15,24 +15,22 @@ if (isset($_POST['logout'])) {
     exit;
 }
 
-$userId = isset($_SESSION['id']) ? $_SESSION['id'] : 0; // Pretpostavljam da spremate userId u sesiji
 $firstName = isset($_SESSION['firstName']) ? $_SESSION['firstName'] : 'First';
 $lastName = isset($_SESSION['lastName']) ? $_SESSION['lastName'] : 'Last';
+$customer = $firstName . ' ' . $lastName;
 
 // Dohvaćanje radnih naloga iz baze podataka
 $statusFilter = isset($_GET['status']) ? $_GET['status'] : '';
-$query = "SELECT wo.* FROM workOrders wo
-          INNER JOIN workOrderWorkers wow ON wo.id = wow.workOrderId
-          WHERE wow.workerId = ? AND (wo.status = 'On hold' OR wo.status = 'Accepted' OR wo.status = 'In process')";
+$query = "SELECT * FROM workOrders WHERE customer = ?";
 if ($statusFilter) {
-    $query .= " AND wo.status = ?";
+    $query .= " AND status = ?";
 }
 $stmt = $con->prepare($query);
 
 if ($statusFilter) {
-    $stmt->bind_param("is", $userId, $statusFilter);
+    $stmt->bind_param("ss", $customer, $statusFilter);
 } else {
-    $stmt->bind_param("i", $userId);
+    $stmt->bind_param("s", $customer);
 }
 
 $stmt->execute();
@@ -40,36 +38,27 @@ $result = $stmt->get_result();
 $workOrders = $result->fetch_all(MYSQLI_ASSOC);
 
 $stmt->close();
-
-// Dohvati broj nepročitanih obavijesti
-$query = "SELECT COUNT(*) as unread_count FROM notifications WHERE userId = ? AND is_read = 0";
-$stmt = $con->prepare($query);
-$stmt->bind_param("i", $userId);
-$stmt->execute();
-$result = $stmt->get_result();
-$notificationCount = $result->fetch_assoc()['unread_count'];
-$stmt->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work Orders Manager</title>
-    <link rel="stylesheet" href="worker.css">
-    
+    <link rel="stylesheet" href="ordersDirectorList.css">
 </head>
 <body>
     <div class="header">
-    <div class="left-section">
+        <div class="left-section">
             <img class="menu" alt="menu" src="Images/menu.png" onclick="toggleMenu()" loading="lazy">
             <h1><span class="normal-weight">WorkOrders</span><span class="bold-weight">Manager</span></h1>
         </div>
         <div class="profile-menu">
             <img class="logo" alt="logo" src="Images/user.png" loading="lazy">
             <div class="dropdown-content">
-            <a href="#"><?php echo htmlspecialchars($firstName . ' ' . $lastName); ?></a>
-            <a href="profile.php">Profile</a>
+                <a href="#"><?php echo htmlspecialchars($firstName . ' ' . $lastName); ?></a>
+                <a href="profile.php">Profile</a>
                 <a href="#" onclick="document.getElementById('logout-form').submit();">Log Out</a>
                 <form id="logout-form" method="post" style="display: none;">
                     <input type="hidden" name="logout">
@@ -81,10 +70,24 @@ $stmt->close();
         </div>
     </div>
 
+    <div id="side-menu" class="side-menu">
+        <a href="#" class="closebtn" onclick="closeMenu()">&times;</a>
+        <a href="director.php">Home</a>
+        <a href="#">Work Orders</a>
+        <a href="teamsList.php">Teams</a>
+        <a href="#" onclick="document.getElementById('logout-form').submit();">Log Out</a>
+    </div>
 
-    <p class="active-p">Active Work Orders:</p>
+    <div class="container">
+        <div class="filter-links">
+            <a href="ordersDirectorList.php">All orders</a>
+            <a href="ordersDirectorList.php?status=On hold">On hold</a>
+            <a href="ordersDirectorList.php?status=Accepted">Accepted</a>
+            <a href="ordersDirectorList.php?status=In progress">In process</a>
+            <a href="ordersDirectorList.php?status=Finished">Finished</a>
+        </div>
 
-    <div class="work-orders-list">
+        <div class="work-orders-list">
         <?php foreach ($workOrders as $order): ?>
             <div class="work-order" data-id="<?php echo htmlspecialchars($order['id']); ?>">
                 <h3>Work Order Number: <?php echo htmlspecialchars($order['number']); ?></h3>
@@ -105,14 +108,8 @@ $stmt->close();
         <?php endforeach; ?>
     </div>
 
-    <div id="side-menu" class="side-menu">
-        <a href="#" class="closebtn" onclick="closeMenu()">&times;</a>
-        <a href="#">Home</a>
-        <a href="ordersWorkerList.php">Work Orders</a>
-        <a href="teamsListWorker.php">Teams</a>
-        <a href="notifications.php">Notifications <span id="notification-count"><?php echo $notificationCount; ?></span></a>
-        <a href="#" onclick="document.getElementById('logout-form').submit();">Log Out</a>
-    </div>
+        
+   
 
     <script>
         function toggleMenu() {
@@ -129,18 +126,18 @@ $stmt->close();
         }
 
             // Zatvaranje izbornika kad se klikne na stavku unutar izbornika
-    document.querySelectorAll('.side-menu a').forEach(item => {
-        item.addEventListener('click', () => {
-            closeMenu();
+        document.querySelectorAll('.side-menu a').forEach(item => {
+            item.addEventListener('click', () => {
+                closeMenu();
+            });
         });
-    });
 
         document.addEventListener('DOMContentLoaded', (event) => {
         const workOrders = document.querySelectorAll('.work-order');
         workOrders.forEach(order => {
             order.addEventListener('click', () => {
                 const orderId = order.getAttribute('data-id');
-                window.location.href = `fullWorkOrderWorker.php?id=${orderId}`;
+                window.location.href = `fullWorkOrderDirector.php?id=${orderId}`;
             });
         });
     });

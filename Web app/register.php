@@ -3,6 +3,8 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 session_start();
 
+require_once 'db.php';
+
 if(isset($_POST['submit'])) {
     // Getting all values from the HTML form
     $firstName = $_POST['firstName'];
@@ -16,19 +18,6 @@ if(isset($_POST['submit'])) {
     $country = $_POST['country'];
     $role = $_POST['role'];
 
-    // Database details
-    $host = "localhost";
-    $username = "root";
-    $dbPassword = ""; // Use a different variable name to avoid confusion with the password from the form
-    $dbname = "work_orders_manager";
-
-    // Creating a connection
-    $con = new mysqli($host, $username, $dbPassword, $dbname);
-
-    // To ensure that the connection is made
-    if ($con->connect_error) {
-        die("Connection failed: " . $con->connect_error);
-    }
 
     // Using prepared statements to create a data entry query
     $stmt = $con->prepare("INSERT INTO users (firstName, lastName, email, password, phoneNumber, company, position, city, country, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");

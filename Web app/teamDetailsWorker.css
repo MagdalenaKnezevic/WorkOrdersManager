@@ -1,0 +1,218 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header .left-section {
+    display: flex;
+    align-items: center;
+}
+
+.header h1 {
+    margin: 0;
+    margin-left: 10px;
+    font-size: 1.5em;
+}
+
+.normal-weight {
+    font-weight: normal;
+}
+
+.bold-weight {
+    font-weight: bold;
+}
+
+.menu {
+    width: 2.5em;
+    height: 2.5em;
+    cursor: pointer;
+}
+
+.profile-menu {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.profile-menu img {
+    width: 3em;
+    height: 3em;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.profile-menu:hover .dropdown-content {
+    display: block;
+}
+
+.side-menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.side-menu a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.side-menu a:hover {
+    background-color: #575757;
+}
+
+.side-menu .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.container {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.team-details {
+    margin-bottom: 20px;
+}
+
+.team-details h3, .team-details p {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+.team-details ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.team-details ul li {
+    padding: 10px;
+    background-color: #f1f1f1;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1em;
+}
+
+#back-button:hover {
+    background-color: #0056b3;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.2em;
+    }
+
+    .profile-menu img {
+        width: 2.5em;
+        height: 2.5em;
+    }
+
+    .team-details h3, .team-details p {
+        font-size: 1em;
+    }
+
+    .team-details ul li {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+
+    #back-button {
+        width: 100%;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header .left-section {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .header h1 {
+        margin: 0;
+        font-size: 1.2em;
+    }
+
+    .menu {
+        width: 2em;
+        height: 2em;
+    }
+
+    .profile-menu img {
+        width: 2.5em;
+        height: 2.5em;
+    }
+
+    .team-details ul li {
+        font-size: 0.8em;
+        padding: 6px;
+    }
+
+    #back-button {
+        font-size: 0.9em;
+    }
+}

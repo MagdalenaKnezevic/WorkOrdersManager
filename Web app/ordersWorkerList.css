@@ -1,0 +1,179 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+}
+
+.header .left-section {
+    display: flex;
+    align-items: center;
+}
+
+.header h1 {
+    margin: 0;
+    margin-left: 10px;
+}
+
+.normal-weight {
+    font-weight: normal;
+    font-size: 0.9em;
+}
+
+.bold-weight {
+    font-weight: bold;
+}
+
+img {
+    width: 3em;
+    height: 3em;
+}
+
+.menu {
+    width: 2.5em;
+    height: 2.5em;
+    cursor: pointer;
+}
+
+.profile-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.profile-menu:hover .dropdown-content {
+    display: block;
+}
+
+.side-menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.side-menu a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.side-menu a:hover {
+    background-color: #575757;
+}
+
+.side-menu .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.container {
+    padding: 20px;
+}
+
+.filter-links {
+    margin-bottom: 20px;
+}
+
+.filter-links a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.filter-links a:hover {
+    text-decoration: underline;
+}
+
+.work-orders-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.work-order {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.work-order h3 {
+    margin: 0 0 10px;
+}
+
+.work-order p {
+    margin: 0 0 5px;
+}
+
+.work-order .order-date {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: bold;
+}
+
+.work-order .order-status {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+}
+
+.work-order .order-status img {
+    width: 20px;
+    height: 20px;
+}
+.work-order {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    position: relative;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    cursor: pointer; /* Dodano kako bi se pokazalo da je klikabilno */
+}
+
+.work-order:hover {
+    background-color: #f0f8ff; /* Svjetlo plava boja */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Blaga sjena */
+}

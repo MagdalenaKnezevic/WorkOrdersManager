@@ -1,0 +1,215 @@
+/* Osnovni stilovi */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 50%;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"], textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #b2c3d6;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 2em;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Centriranje back-button-a */
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#back-button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#back-button:hover {
+    background-color: #002c5b;
+}
+
+/* Centriranje submit dugmeta */
+.create-order-button-container {
+    text-align: center;
+}
+
+.create-order-button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1.5em;
+}
+
+.create-order-button:hover {
+    background-color: #002c5b;
+}
+
+/* Skočni prozor - modal */
+#workerModal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 600px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+    transition: width 0.3s ease;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+input#workerEmail {
+    width: 80%;
+    padding: 10px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.work-order {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    position: relative;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.work-order:hover {
+    background-color: #f0f8ff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#workerResults {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.addWorker {
+    float: right;
+}
+
+.addWorker:hover {
+    background-color: #0056b3;
+}
+
+/* Stil za odabrane radnike */
+#selected-workers-container {
+    margin-top: 20px;
+}
+
+.selected-worker-item {
+    padding: 5px;
+    background-color: #f9f9f9;
+    margin-bottom: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    position: relative;
+}
+
+.remove-worker {
+    cursor: pointer;
+    color: red;
+    margin-left: 3em;
+}
+
+/* Media queries za responzivnost */
+@media (max-width: 768px) {
+    .container {
+        width: 80%;
+    }
+    
+    .modal-content {
+        width: 90%; /* Širina modala na manjim ekranima */
+        margin-top: 10%;
+    }
+
+    .close {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+    }
+    
+    .modal-content {
+        width: 95%; /* Gotovo puna širina na veoma malim ekranima */
+        margin-top: 5%;
+        padding: 15px;
+    }
+
+    .close {
+        font-size: 20px;
+    }
+}
